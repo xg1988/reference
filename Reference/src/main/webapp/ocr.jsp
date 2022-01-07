@@ -3,12 +3,13 @@
 <%@page import="net.sourceforge.tess4j.Tesseract"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<jsp:useBean id="Selenium" class="com.refer.selenium.Selenium" scope="page"/> 
 <%
 
 Tesseract tesseract = new Tesseract();
 tesseract.setDatapath("C:\\Users\\MT00542\\git\\reference\\Reference\\resource");
 tesseract.setLanguage("kor");
+/* tesseract.setDatapath("C:\\Users\\MT00542\\git\\reference\\Reference\\resource");
+tesseract.setLanguage("eng"); */
 
 String result = "";
 try {

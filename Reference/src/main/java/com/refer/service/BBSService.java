@@ -9,7 +9,7 @@ public class BBSService {
 	static CommonDao commonDao;
 	
 	public static List<Map<String, Object>> selectRecord(){
-		//String[] inputArr = {"테스트"};
+		//String[] inputArr = {"test"};
 		String[] outputArr = {"이름", "아이디", "작성자", "내용", "작성일자"};
 		String sql = "SELECT * FROM `jobsjo88`.`기록` ORDER BY `아이디` DESC LIMIT 1000;";
 		

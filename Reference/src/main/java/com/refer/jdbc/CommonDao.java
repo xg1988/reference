@@ -37,7 +37,7 @@ public class CommonDao {
 			if(inputArr != null) {
 				for (int i = 0; i < inputArr.length; i++) {
 					String string = inputArr[i];
-					
+					System.out.println("["+i+"]: "+ string);
 					pstmt.setString(i, string);
 				}
 			}

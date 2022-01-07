@@ -31,7 +31,7 @@ public class Selenium {
     public static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
     public static final String WEB_DRIVER_PATH = "C:/chrome/chromedriver.exe";
     
-    //크롤링 할 URL
+    //�щ·留� �� URL
     private String base_url;
     
     public Selenium() {
@@ -48,7 +48,6 @@ public class Selenium {
     public void crawl() {
  
         try {
-            //get page (= 브라우저에서 url을 주소창에 넣은 후 request 한 것과 같다)
             driver.get(base_url);
             System.out.println(driver.getPageSource());
     
@@ -75,8 +74,8 @@ public class Selenium {
 		 */
 		
 		/*
-		 * Document 클래스 : 연결해서 얻어온 HTML 전체 문서 Element 클래스 : Documnet의 HTML 요소 Elements
-		 * 클래스 : Element가 모인 자료형
+		 * Document �대���� : �곌껐�댁�� �살�댁�� HTML ��泥� 臾몄�� Element �대���� : Documnet�� HTML ���� Elements
+		 * �대���� : Element媛� 紐⑥�� ��猷���
 		 * 
 		 * String url = "https://omoney.kbstar.com/quics?page=oevent&QSL=F#loading";
 		 * String selector = ".eventListArea li"; Document doc = null;
@@ -85,15 +84,15 @@ public class Selenium {
 		 * (KeyManagementException e) { // TODO Auto-generated catch block
 		 * e.printStackTrace(); } catch (NoSuchAlgorithmException e) { // TODO
 		 * Auto-generated catch block e.printStackTrace(); } } try { doc =
-		 * Jsoup.connect(url).get(); // -- 1. get방식의 URL에 연결해서 가져온 값을 doc에 담는다.
+		 * Jsoup.connect(url).get(); // -- 1. get諛⑹���� URL�� �곌껐�댁�� 媛��몄�� 媛��� doc�� �대����.
 		 * //System.out.println(doc.text()); } catch (IOException e) {
 		 * System.out.println(e.getMessage()); }
 		 * 
-		 * Elements titles = doc.select(selector); // -- 2. doc에서 selector의 내용을 가져와
+		 * Elements titles = doc.select(selector); // -- 2. doc���� selector�� �댁�⑹�� 媛��몄��
 		 * System.out.println(titles.size());
 		 * 
-		 * for (int i = 0; i< titles.size(); i++) { // -- 3. Elemntes 길이만큼 반복한다.
-		 * //System.out.println(titles.get(i).text()); // -- 4. 원하는 요소가 출력된다.
+		 * for (int i = 0; i< titles.size(); i++) { // -- 3. Elemntes 湲몄�대��� 諛�蹂듯����.
+		 * //System.out.println(titles.get(i).text()); // -- 4. ������ ����媛� 異��λ����.
 		 * System.out.println("============================================"); String
 		 * eventNm = titles.get(i).getElementsByTag("dt").text();
 		 * System.out.println("eventNm: "+ eventNm); String eventNum =
@@ -104,7 +103,7 @@ public class Selenium {
 		 * titles.get(i).getElementsByTag("img").get(0).attr("src");
 		 * System.out.println("eventImgSrc:"+ eventImgSrc);
 		 * 
-		 * Map<String, String> map = new HashMap<String, String>(); map.put("이벤트일련번호",
+		 * Map<String, String> map = new HashMap<String, String>(); map.put("�대깽�몄�쇰�⑤���",
 		 * eventNum); Document tempDoc =
 		 * jsoupPost("https://omoney.kbstar.com/quics?page=C016559&cc=b033091:b032977",
 		 * map); System.out.println(tempDoc.select("img").get(0).text());
@@ -151,7 +150,7 @@ public class Selenium {
 			}
 		}
 		try {
-			doc = Jsoup.connect(url).data(map).post(); // -- 1. get방식의 URL에 연결해서 가져온 값을 doc에 담는다.
+			doc = Jsoup.connect(url).data(map).post(); // -- 1. get諛⑹���� URL�� �곌껐�댁�� 媛��몄�� 媛��� doc�� �대����.
 
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
