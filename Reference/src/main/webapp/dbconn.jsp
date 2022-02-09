@@ -1,3 +1,4 @@
+<%@page import="com.refer.tistory.TistoryBlog"%>
 <%@page import="com.refer.service.BBSService"%>
 <%@page import="com.refer.jdbc.CommonDao"%>
 <%@page import="java.util.Map"%>
@@ -8,6 +9,13 @@
     pageEncoding="EUC-KR"%>
 <%-- <jsp:useBean id="DBHelper" class="crud.db.DBHelper" scope="page"/> --%>   
 <jsp:useBean id="CommonDao" class="com.refer.tistory.TistoryBlog" scope="page"/> 
-<%
-	CommonDao.getPostList("itstupid", "1");
-%>
+<p>
+	테스트1: 	<%=CommonDao.getBlogInfo(TistoryBlog.ACCESS_TOKEN)%>
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<p>
+<%-- 테스트2: 	<%=CommonDao.getPostList("itstupid", "1")%> --%>
+</p>
