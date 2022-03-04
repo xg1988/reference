@@ -1,7 +1,7 @@
-<%@page import="com.refer.tistory.TistoryBlog"%>
+<%@page import="com.refer.api.TistoryBlog"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<jsp:useBean id="CommonDao" class="com.refer.tistory.TistoryBlog" scope="page"/>     
+<jsp:useBean id="CommonDao" class="com.refer.api.TistoryBlog" scope="page"/>     
 <%	
 	String cmd = request.getParameter("cmd");
 	String resultString = "";

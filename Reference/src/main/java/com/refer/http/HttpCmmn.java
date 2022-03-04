@@ -2,13 +2,26 @@ package com.refer.http;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
+import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class HttpCmmn {
 		
@@ -35,10 +48,11 @@ public class HttpCmmn {
 		public String sendGet(String targetUrl, HashMap<String, Object> inputMap) throws Exception {
 			StringBuilder urlBuilder = new StringBuilder();
 			int index = 0;
+			
 			if(inputMap !=null) {
 				for(String key: inputMap.keySet()) {
 					String appendStr = "?";
-					if(index > 0) {
+					if(		index > 0 ) {
 						appendStr = "&";
 					}
 					urlBuilder.append(appendStr + URLEncoder.encode(key,"UTF-8") 
@@ -120,5 +134,86 @@ public class HttpCmmn {
 			System.out.println("HTTP body : " + response.toString());
 			
 			return response.toString();
+		}
+		
+		public String getHttpURLConnection(String apiUrl, Map<String, String> requestHeaders) throws Exception{
+	        HttpURLConnection con = connect(apiUrl);
+	        try {
+	            con.setRequestMethod("GET");
+	            if(requestHeaders != null) {
+	            	for(Map.Entry<String, String> header :requestHeaders.entrySet()) {
+	                    con.setRequestProperty(header.getKey(), header.getValue());
+	                }
+	            }
+	            
+	            int responseCode = con.getResponseCode();
+	            if (responseCode == HttpURLConnection.HTTP_OK) { // 정상 호출
+	                return readBody(con.getInputStream());
+	            } else { // 에러 발생
+	                return readBody(con.getErrorStream());
+	            }
+	        } catch (IOException e) {
+	            throw new RuntimeException("API 요청과 응답 실패", e);
+	        } finally {
+	            con.disconnect();
+	        }
+	    }
+
+
+	    private static HttpURLConnection connect(String apiUrl) throws Exception{
+	    	setSSL();
+	    	
+	        try {
+	            URL url = new URL(apiUrl);
+	            return (HttpURLConnection)url.openConnection();
+	        } catch (MalformedURLException e) {
+	            throw new RuntimeException("API URL이 잘못되었습니다. : " + apiUrl, e);
+	        } catch (IOException e) {
+	            throw new RuntimeException("연결이 실패했습니다. : " + apiUrl, e);
+	        }
+	    }
+
+
+	    private static String readBody(InputStream body){
+	        InputStreamReader streamReader = new InputStreamReader(body);
+
+
+	        try (BufferedReader lineReader = new BufferedReader(streamReader)) {
+	            StringBuilder responseBody = new StringBuilder();
+
+
+	            String line;
+	            while ((line = lineReader.readLine()) != null) {
+	                responseBody.append(line);
+	            }
+
+
+	            return responseBody.toString();
+	        } catch (IOException e) {
+	            throw new RuntimeException("API 응답을 읽는데 실패했습니다.", e);
+	        }
+	    }
+	    
+	    public static void setSSL() throws NoSuchAlgorithmException, KeyManagementException {
+			TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+				public X509Certificate[] getAcceptedIssuers() {
+					return null;
+				}
+
+				public void checkClientTrusted(X509Certificate[] certs, String authType) {
+				}
+
+				public void checkServerTrusted(X509Certificate[] certs, String authType) {
+				}
+			} };
+			SSLContext sc = SSLContext.getInstance("SSL");
+			sc.init(null, trustAllCerts, new SecureRandom());
+			HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
+				@Override
+				public boolean verify(String hostname, SSLSession session) {
+					return true;
+				}
+			});
+			HttpsURLConnection.setDefaultSSLSocketFactory(sc.getSocketFactory());
 		}
 }

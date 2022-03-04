@@ -39,37 +39,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	<!-- <a class="waves-effect waves-light btn blue lighten-1">오피스텔</a> -->
 </section>
 <section class="content">
-	<h5>상세내용 조회</h5>
-	 <div class="divider"></div>
-	  <div class="section">
+	<h5>글쓰기</h5>
 	  
-	    <h6>[주택관리번호]주택명</h6>
-	    <p>[2020000010] 양주옥정유림노르웨이숲. </p>
-	    <h6>공급위치</h6>
-	    <p>경기도 양주시 옥정동 1097 (옥정택지개발지구 A-20(1)블록)</p>
-	    <h6>공급규모</h6>
-	    <p>1140</p>
+	   <h6>제목</h6>
+	   <!--  <p>[게시글 제목]] 게시글제목. </p> -->
+	    <div class="input-field col s6">
+            <input id="input_text" type="text" data-length="10">
+            <label for="input_text">제목을 입력해주세요.</label>
+          </div>
 	    
-	    <h6>일정</h6>
-	    <p>모집공고일:
-	    	<br/>특별공급 접수시작일:
-	    	<br/>특별공급 접수종료일:
-	    	<br/>1순위 접수일 해당지역:
-	    	<br/>1순위 접수일 경기지역:
-	    	<br/>1순위 접수일 기타지역:
-	    	
-	    	<br/>2순위 접수일 해당지역:
-	    	<br/>2순위 접수일 경기지역:
-	    	<br/>2순위 접수일 기타지역:
-	    	<br/>당첨자발표일:
-	    	<br/>계약시작일:
-	    	<br/>계약종료일:
-	    </p>
-	    <h6>공고번호</h6>
-	    <p>2020000010</p>
-	    <h6>홈페이지 주소</h6>
-	    <p>http://okjung-yulim.com</p>
-	  </div>
+	    <h6>내용</h6>
+	     <div class="input-field col s12">
+            <textarea id="textarea2" class="materialize-textarea" data-length="120" rows="100" style="height: 300px;" maxlength="1000"></textarea>
+            <label for="textarea2">내용을 입력해주세요.</label>
+          </div>
+	    
 	   <div class="divider"></div>
 	  <!-- <div class="row">
     <div class="col s12 m5">
@@ -92,9 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </div> -->
 	  
-	  <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">댓글</a>
-	  <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">목록</a>
-	  <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">찜하기</a>
+	  <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">저장</a>
+	  <!-- <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">목록</a>
+	  <a class="waves-effect waves-light btn blue lighten-1" href="./list.html">찜하기</a> -->
 </section>
 
 

@@ -1,4 +1,4 @@
-<%@page import="com.refer.tistory.TistoryBlog"%>
+<%@page import="com.refer.api.TistoryBlog"%>
 <%@page import="com.refer.service.BBSService"%>
 <%@page import="com.refer.jdbc.CommonDao"%>
 <%@page import="java.util.Map"%>
@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%-- <jsp:useBean id="DBHelper" class="crud.db.DBHelper" scope="page"/> --%>   
-<jsp:useBean id="CommonDao" class="com.refer.tistory.TistoryBlog" scope="page"/> 
+<jsp:useBean id="CommonDao" class="com.refer.api.TistoryBlog" scope="page"/> 
 <p>
 	Å×½ºÆ®1: 	<%=CommonDao.getBlogInfo(TistoryBlog.ACCESS_TOKEN)%>
 </p>

@@ -1,4 +1,4 @@
-package com.refer.tistory;
+package com.refer.api;
 
 import java.util.HashMap;
 

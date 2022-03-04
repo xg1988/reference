@@ -1,0 +1,77 @@
+@charset "EUC-KR";
+
+
+@font-face {
+    font-family: 'LeferiBaseRegular';
+    src: url('../../resource/fonts/LeferiBaseRegular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+	body{
+	font-family: 'LeferiBaseRegular';
+	}
+	.content{
+		padding:5px;
+		font-size: 0.85rem;	
+	}
+	.menu{
+		margin-top: 10px;
+		margin-left: 5px;
+		margin-right: 5px;
+		
+	}
+	
+	.menu select{
+		font-size: 0.8rem;	
+	}
+	.menu a{
+		font-size: 0.8rem;	
+	}
+	.pagination{
+	}
+	/* .footer{
+		position:absolute;
+		bottom: 0;
+		width: 100%;
+	} */
+	table > tbody > tr > td{
+		padding: 10px 5px;
+	}
+	nav .brand-logo {
+		font-size: 1rem;	
+		font-weight:800;
+		width:90%;
+	}
+	
+	.pagination{
+		position: relative;
+		
+	}
+	.select-wrapper input.select-dropdown {
+		font-size: 0.9rem;
+	}
+	.page-footer {
+		padding-top: 0;
+	}
+	.dropdown-content li>a, .dropdown-content li>span {
+		color:black;
+	}
+	nav .brand-logo i, nav .brand-logo [class^="mdi-"], nav .brand-logo [class*="mdi-"], nav .brand-logo i.material-icons {
+	float:right;
+}
+
+
+.login_btn_group a {
+	display: block;
+	margin-bottom: 4px;
+}
+
+.login_btn_group a:first-child {
+	display: block;
+	margin-bottom: 20px;
+}
+
+.login_btn_group a:nth-child(3) {
+	display: block;
+	margin-bottom: 20px;
+}
